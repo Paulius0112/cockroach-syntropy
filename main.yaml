@@ -1,0 +1,36 @@
+- name: Install general packages and docker
+  hosts: all
+  become: yes
+  become_user: root
+  roles:
+  - general
+  - docker
+ 
+- name: Launch Syntropy Agent on node-1
+  become: yes
+  become_user: root
+  hosts: node1
+  roles:
+    - deploy_agent
+  vars:
+    SYNTROPY_API_KEY: "{{ SYNTROPY_AGENT_API_KEY }}"
+    SYNTROPY_AGENT_NAME: "{{ SYNTROPY_AGENT_NAME_1  }}"   
+    SYNTROPY_PROVIDER: "{{ SYNTROPY_PROVIDER_1  }}"
+  vars_files:
+    - secrets.yaml
+
+# Pgpool
+- name: Launch Syntropy Agentn on node-2
+  become: yes
+  become_user: root
+  hosts: node2
+  roles:
+    - deploy_agent
+  vars:
+    SYNTROPY_API_KEY: "{{ SYNTROPY_AGENT_API_KEY }}"
+    SYNTROPY_AGENT_NAME: "{{ SYNTROPY_AGENT_NAME_2  }}"
+    SYNTROPY_PROVIDER: "{{ SYNTROPY_PROVIDER_2  }}"
+  vars_files:
+    - secrets.yaml
+
+
