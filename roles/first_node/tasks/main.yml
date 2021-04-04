@@ -23,13 +23,9 @@
     image: cockroachdb/cockroach:v20.2.6
     command: start --insecure --join=10.56.0.2,10.55.0.2,10.57.0.2
     state: started
-    exposed_ports:
-      - 26257:26257
-      - 8080:8080
     volumes:
       - roach1:/cockroach/cockroach-data
-    extra_hosts:
-      host1: "10.56.0.2"
+    hostname: "10.56.0.2"
     network_mode: "syntropynet"
     restart: yes
     detach: yes

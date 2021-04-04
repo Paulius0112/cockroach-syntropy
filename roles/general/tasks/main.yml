@@ -1,22 +1,10 @@
-- name: add EPEL repo
-  yum:
-    name: ["epel-release", "elrepo-release"]
-    state: latest
-  become: yes
-  become_user: root
-- name: upgrade all packages
-  yum: name=* state=latest
+- name: Install Wireguard
+  apt:
+      state: present
+      update_cache: yes
+      name:
+          - wireguard
+          - wireguard-tools
 
-- name: install Yum elrepo plugin
-  yum:
-    name: yum-plugin-elrepo
-    state: latest
-  become: yes
-  become_user: root
-- name: install Wireguard
-  yum:
-    name: ["kmod-wireguard", "wireguard-tools"]
-    state: latest
-  become: yes
-  become_user: root
-
+- name: Load Wireguard module
+  command: modprobe wireguard

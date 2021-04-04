@@ -1,1 +1,6 @@
-- name: Perfo
+- name: Perform cluster initialization
+  shell: |
+    docker exec -it roach1 ./cockroach init --insecure
+  register: output
+
+- debug: msg="{{ output.stdout  }}"

@@ -34,7 +34,8 @@
   vars_files:
     - secrets.yaml
 
-- name: Launch syntropy agent
+# Node 3
+- name: Launch Syntropy Agent on node-3
   become: yes
   become_user: root
   hosts: node3
@@ -47,32 +48,13 @@
   vars_files:
     - secrets.yaml
 
-# Deploy 
-- name: Launch Syntropy Agent on node-3
-  become: yes
-  become_user: root
-  hosts: node1
-  roles:
-    - first_node
-
-- name: Launch Syntropy Agent on node-3
-  become: yes
-  become_user: root
-  hosts: node2
-  roles:
-    - second_node
-
-- name: Launch Syntropy Agent on node-3
-  become: yes
-  become_user: root
-  hosts: node3
-  roles:
-    - third_node
-
+# Deploy cluster
 - name: Initialize cluster
   become: yes
   become_user: root
   hosts: node1
   roles:
     - cluster
-    - first_node
+
+
+

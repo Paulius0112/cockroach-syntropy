@@ -1,11 +1,14 @@
-- include_vars: ../../../secrets.yaml
+
+- name: pull an image
+  docker_image:
+    name: syntropynet/agent:latest
+    force_source: yes
 
 - name: Deploy Syntropy Agent
   docker_container:
-   image: syntropynet/agent:stable
    name: syntropy-agent
    restart_policy: unless-stopped
-   image: syntropynet/agent:stable
+   image: syntropynet/agent:latest
    network_mode: "{{ NETWORK }}"
    purge_networks: no
    state: started

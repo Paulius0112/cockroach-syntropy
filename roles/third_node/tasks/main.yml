@@ -25,8 +25,7 @@
     state: started
     volumes:
       - roach3:/cockroach/cockroach-data
-    extra_hosts:
-      host1: "10.57.0.2"
+    hostname: "10.57.0.2"
     network_mode: "syntropynet"
     restart: yes
     detach: yes
