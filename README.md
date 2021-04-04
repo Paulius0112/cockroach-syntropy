@@ -55,14 +55,18 @@ The following command should produce an output similar to this:
 
 ![](./assets/output.png)
 
-## Connecting out deployed CockroachDB cluster
+## Connecting our deployed CockroachDB cluster
 The last step is to connect our deployed services using Syntropy Stack UI. But before that, check whether all your created virtual machines show up at the Endpoints section:
 
 ![](./assets/endpoints.png)
 
-Then, create a new network and add all available end points. Also, connect every virtual machine with each other, as well as include their services.
+Then, create a new network and add all available endpoints. Also, connect every virtual machine with each other.
 
 ![](./assets/network.png)
+
+If connection was successfull, you will be able to connect their services as well.
+
+![](./assets/services.png)
 
 ##Check that cluster is up and running
 To check whether all instances were connected, you could connect into any of the VM and perform a command 
