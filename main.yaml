@@ -3,7 +3,7 @@
   become: yes
   become_user: root
   roles:
-  - general
+#  - general
   - docker
 
 # Node 1 
